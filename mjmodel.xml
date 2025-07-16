@@ -1,15 +1,69 @@
-<mujoco model="MuJoCo Model">
-  <compiler angle="radian"/>
-
+<mujoco>
   <asset>
-    <material name="gray" rgba="0.8 0.8 0.8 1"/>
-    <material name="red" rgba="1 0 0 1"/>
-    <material name="blue" rgba="0 0 1 1"/>
+    <material name="gray"   rgba="0.8 0.8 0.8 1"/>
+    <material name="red"    rgba="1 0 0 1"/>
+    <material name="blue"   rgba="0 0 1 1"/>
+    <material name="yellow" rgba="1 1 0 1"/> <!-- コイン用 -->
   </asset>
 
   <worldbody>
-    <geom size="1.5 0.05" pos="0 0 0.05" type="cylinder" material="gray"/>
-    <geom size="1 0.05" pos="0 0 0.15" type="cylinder" material="red"/>
-    <geom size="0.5 0.05" pos="0 0 0.25" type="cylinder" material="blue"/>
+    <!-- 下段（gray） -->
+    <geom type="cylinder" size="1.5 0.05" pos="0 0 0.05" material="gray"/>
+
+    <!-- 中段（red） -->
+    <geom type="cylinder" size="1.0 0.05" pos="0 0 0.15" material="red"/>
+
+    <!-- 上段（blue） -->
+    <geom type="cylinder" size="0.5 0.05" pos="0 0 0.25" material="blue"/>
+
+    <!-- ==== コイン配置 ==== -->
+    <!-- 共通パラメータ -->
+    <!-- コイン: 半径0.05, 高さ0.02 -->
+
+    <!-- ▼ 下段（gray）のコイン（12個） -->
+    <body>
+      <!-- 半径1.3, 高さ0.10 -->
+      <!-- 角度30°ずつ12個 -->
+      <!-- x = r * cos(θ), y = r * sin(θ) -->
+      <geom type="cylinder" size="0.05 0.02" pos="1.3 0.0 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="1.125 0.65 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.65 1.125 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.0 1.3 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.65 1.125 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-1.125 0.65 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-1.3 0.0 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-1.125 -0.65 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.65 -1.125 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.0 -1.3 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.65 -1.125 0.10" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="1.125 -0.65 0.10" material="yellow"/>
+    </body>
+
+    <!-- ▼ 中段（red）のコイン（10個） -->
+    <body>
+      <!-- 半径0.85, 高さ0.20 -->
+      <geom type="cylinder" size="0.05 0.02" pos="0.85 0.0 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.69 0.50 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.26 0.80 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.26 0.80 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.69 0.50 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.85 0.0 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.69 -0.50 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.26 -0.80 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.26 -0.80 0.20" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.69 -0.50 0.20" material="yellow"/>
+    </body>
+
+    <!-- ▼ 上段（blue）のコイン（6個） -->
+    <body>
+      <!-- 半径0.35, 高さ0.30 -->
+      <geom type="cylinder" size="0.05 0.02" pos="0.35 0.0 0.30" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.18 0.31 0.30" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.18 0.31 0.30" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.35 0.0 0.30" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="-0.18 -0.31 0.30" material="yellow"/>
+      <geom type="cylinder" size="0.05 0.02" pos="0.18 -0.31 0.30" material="yellow"/>
+    </body>
+
   </worldbody>
 </mujoco>
