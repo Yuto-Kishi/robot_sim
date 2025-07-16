@@ -1,0 +1,63 @@
+<mujoco>
+    <asset>
+      <material name="gray"  rgba="0.8 0.8 0.8 1"/>
+      <material name="red"   rgba="1 0 0 1"/>
+      <material name="blue"  rgba="0 0 1 1"/>
+      <material name="yellow" rgba="1 1 0 1"/>
+    </asset>
+  
+    <worldbody>
+      <!-- 円柱：土台 -->
+      <geom type="cylinder" size="1.5 0.05" pos="0 0 0.05" material="gray"/>
+      <!-- 円柱：中段 -->
+      <geom type="cylinder" size="1.0 0.05" pos="0 0 0.15" material="red"/>
+      <!-- 円柱：上段 -->
+      <geom type="cylinder" size="0.5 0.05" pos="0 0 0.25" material="blue"/>
+  
+      <!-- コイン配置（最上段） -->
+      <!-- 半径0.3m、8個配置 -->
+      <!-- コインサイズ: 直径=0.05m, 高さ=0.01m -->
+      <!-- 中心高さ=0.25+0.05=0.30m -->
+      <!-- 赤段（中段）: 半径0.8m, 10個配置 -->
+      <!-- 灰段（下段）: 半径1.3m, 12個配置 -->
+  
+      <!-- 関数的に配置 -->
+      <!-- Pythonで生成した結果を貼り付けた例 -->
+      <!-- コイン配置: 上段 -->
+      <geom type="cylinder" size="0.025 0.005" pos="0.30 0.00 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.21 0.21 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.00 0.30 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.21 0.21 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.30 0.00 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.21 -0.21 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.00 -0.30 0.305" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.21 -0.21 0.305" material="yellow"/>
+  
+      <!-- コイン配置: 中段（赤） -->
+      <geom type="cylinder" size="0.025 0.005" pos="0.80 0.00 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.65 0.47 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.28 0.75 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.28 0.75 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.65 0.47 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.80 0.00 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.65 -0.47 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.28 -0.75 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.28 -0.75 0.205" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.65 -0.47 0.205" material="yellow"/>
+  
+      <!-- コイン配置: 最下段（灰） -->
+      <geom type="cylinder" size="0.025 0.005" pos="1.30 0.00 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="1.13 0.65 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.78 1.02 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.26 1.28 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.26 1.28 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.78 1.02 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-1.13 0.65 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-1.30 0.00 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-1.13 -0.65 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.78 -1.02 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="-0.26 -1.28 0.105" material="yellow"/>
+      <geom type="cylinder" size="0.025 0.005" pos="0.26 -1.28 0.105" material="yellow"/>
+    </worldbody>
+  </mujoco>
+  
