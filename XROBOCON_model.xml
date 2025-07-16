@@ -1,0 +1,19 @@
+<mujoco>
+  <asset>
+    <material name="gray" rgba="0.8 0.8 0.8 1"/>
+    <material name="red"  rgba="1 0 0 1"/>
+    <material name="blue" rgba="0 0 1 1"/>
+  </asset>
+
+  <worldbody>
+    <!-- 一番下の広い台 -->
+    <geom type="cylinder" size="1.5 0.05" pos="0 0 0.05" material="gray"/>
+
+    <!-- 中段（赤） -->
+    <geom type="cylinder" size="1.0 0.05" pos="0 0 0.15" material="red"/>
+
+    <!-- 上段（青） -->
+    <geom type="cylinder" size="0.5 0.05" pos="0 0 0.25" material="blue"/>
+  </worldbody>
+</mujoco>
+

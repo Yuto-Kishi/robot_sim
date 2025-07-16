@@ -1,0 +1,15 @@
+<mujoco model="MuJoCo Model">
+  <compiler angle="radian"/>
+
+  <asset>
+    <material name="gray" rgba="0.8 0.8 0.8 1"/>
+    <material name="red" rgba="1 0 0 1"/>
+    <material name="blue" rgba="0 0 1 1"/>
+  </asset>
+
+  <worldbody>
+    <geom size="1.5 0.05" pos="0 0 0.05" type="cylinder" material="gray"/>
+    <geom size="1 0.05" pos="0 0 0.15" type="cylinder" material="red"/>
+    <geom size="0.5 0.05" pos="0 0 0.25" type="cylinder" material="blue"/>
+  </worldbody>
+</mujoco>
