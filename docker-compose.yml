@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mujoco:
+    build: .
+    image: mujoco_gui_latest
+    container_name: mujoco_gui_container
+    ports:
+      - "5901:5900"  # ← VNC接続用
+    volumes:
+      - .:/workspace
+    environment:
+      - DISPLAY=:1
+    tty: true
+    working_dir: /workspace
+

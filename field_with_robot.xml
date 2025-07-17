@@ -1,0 +1,45 @@
+<mujoco>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+  <asset>
+    <material name="gray"   rgba="0.7 0.7 0.7 1"/>
+    <material name="red"    rgba="1 0 0 1"/>
+    <material name="blue"   rgba="0 0 1 1"/>
+    <material name="yellow" rgba="1 1 0 1"/>
+    <material name="black"  rgba="0.1 0.1 0.1 1"/>
+  </asset>
+
+  <worldbody>
+    <!-- 3段円柱フィールド -->
+    <geom type="cylinder" size="1.5 0.05" pos="0 0 0.05" material="gray"/>
+    <geom type="cylinder" size="1.0 0.05" pos="0 0 0.15" material="red"/>
+    <geom type="cylinder" size="0.5 0.05" pos="0 0 0.25" material="blue"/>
+
+    <!-- コイン配置（例） -->
+    <!-- ...（省略、必要に応じて追加）... -->
+
+    <!-- ロボット本体 -->
+    <body name="robot" pos="0 0 0.12">
+      <geom type="box" size="0.1 0.1 0.03" material="black"/>
+
+      <!-- 左右の車輪 -->
+      <body name="left_wheel" pos="0 0.11 -0.02">
+        <joint name="left_hinge"  type="hinge" axis="0 -1 0" pos="0 0 0"/>
+        <geom type="cylinder" size="0.05 0.02" material="black"/>
+      </body>
+      <body name="right_wheel" pos="0 -0.11 -0.02">
+        <joint name="right_hinge" type="hinge" axis="0 -1 0" pos="0 0 0"/>
+        <geom type="cylinder" size="0.05 0.02" material="black"/>
+      </body>
+
+      <!-- ジャンプ用アクチュエータ -->
+      <joint name="jump_slider" type="slide" axis="0 0 1" pos="0 0 0"/>
+    </body>
+  </worldbody>
+
+  <!-- アクチュエータ -->
+  <actuator>
+    <motor name="left_motor"  joint="left_hinge" gear="150"/>
+    <motor name="right_motor" joint="right_hinge" gear="150"/>
+    <motor name="jump_motor"  joint="jump_slider" gear="100"/>
+  </actuator>
+</mujoco>
