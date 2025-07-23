@@ -1,0 +1,30 @@
+<mujoco>
+  <asset>
+    <material name="purple" rgba="0.5 0.0 0.5 1"/>
+    <material name="black" rgba="0.1 0.1 0.1 1"/>
+  </asset>
+
+  <worldbody>
+    <body name="robot" pos="0 0 0.25"> <!-- 高さ合わせて本体を浮かす -->
+      <!-- 本体（シャーシ） -->
+      <geom type="box" size="0.20 0.135 0.05" material="purple"/> <!-- 半分サイズ -->
+
+      <!-- 左車輪 -->
+      <body name="left_wheel" pos="0 0.14 -0.05">
+        <joint name="left_hinge" type="hinge" axis="0 -1 0" pos="0 0 0"/>
+        <geom type="cylinder" size="0.0275 0.01" material="black"/>
+      </body>
+
+      <!-- 右車輪 -->
+      <body name="right_wheel" pos="0 -0.14 -0.05">
+        <joint name="right_hinge" type="hinge" axis="0 -1 0" pos="0 0 0"/>
+        <geom type="cylinder" size="0.0275 0.01" material="black"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="left_motor" joint="left_hinge" gear="100"/>
+    <motor name="right_motor" joint="right_hinge" gear="100"/>
+  </actuator>
+</mujoco>

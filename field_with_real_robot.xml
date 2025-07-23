@@ -1,0 +1,78 @@
+<mujoco>
+  <asset>
+    <material name="gray"  rgba="0.8 0.8 0.8 1"/>
+    <material name="red"   rgba="1 0 0 1"/>
+    <material name="blue"  rgba="0 0 1 1"/>
+    <material name="yellow" rgba="1 1 0 1"/>
+    <material name="purple" rgba="0.5 0 0.8 1"/>
+    <material name="black" rgba="0.1 0.1 0.1 1"/>
+  </asset>
+
+  <worldbody>
+    <!-- 円柱フィールド -->
+    <geom type="cylinder" size="1.5 0.05" pos="0 0 0.05" material="gray"/>
+    <geom type="cylinder" size="1.0 0.05" pos="0 0 0.15" material="red"/>
+    <geom type="cylinder" size="0.5 0.05" pos="0 0 0.25" material="blue"/>
+
+    <!-- コイン配置: 上段 -->
+    <geom type="cylinder" size="0.025 0.005" pos="0.30 0.00 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.21 0.21 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.00 0.30 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.21 0.21 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.30 0.00 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.21 -0.21 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.00 -0.30 0.305" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.21 -0.21 0.305" material="yellow"/>
+
+    <!-- コイン配置: 中段 -->
+    <geom type="cylinder" size="0.025 0.005" pos="0.80 0.00 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.65 0.47 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.28 0.75 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.28 0.75 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.65 0.47 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.80 0.00 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.65 -0.47 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.28 -0.75 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.28 -0.75 0.205" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.65 -0.47 0.205" material="yellow"/>
+
+    <!-- コイン配置: 下段 -->
+    <geom type="cylinder" size="0.025 0.005" pos="1.30 0.00 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="1.13 0.65 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.78 1.02 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.26 1.28 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.26 1.28 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.78 1.02 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-1.13 0.65 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-1.30 0.00 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-1.13 -0.65 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.78 -1.02 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="-0.26 -1.28 0.105" material="yellow"/>
+    <geom type="cylinder" size="0.025 0.005" pos="0.26 -1.28 0.105" material="yellow"/>
+
+    <!-- ロボット：寸法に基づき紫色で配置 -->
+    <body name="robot" pos="2.0 0.0 0.10">
+      <geom type="box" size="0.2 0.14 0.1" material="purple"/>
+
+      <!-- 左右の車輪 -->
+      <body name="left_wheel" pos="0.0 0.14 -0.05">
+        <joint name="left_hinge" type="hinge" axis="0 -1 0"/>
+        <geom type="cylinder" size="0.055 0.02" material="black"/>
+      </body>
+      <body name="right_wheel" pos="0.0 -0.14 -0.05">
+        <joint name="right_hinge" type="hinge" axis="0 -1 0"/>
+        <geom type="cylinder" size="0.055 0.02" material="black"/>
+      </body>
+
+      <!-- ジャンプ用スライダ -->
+      <joint name="jump_slider" type="slide" axis="0 0 1" pos="0 0 0"/>
+    </body>
+  </worldbody>
+
+  <!-- モーター -->
+  <actuator>
+    <motor name="left_motor" joint="left_hinge" gear="150"/>
+    <motor name="right_motor" joint="right_hinge" gear="150"/>
+    <motor name="jump_motor" joint="jump_slider" gear="100"/>
+  </actuator>
+</mujoco>
